@@ -15,4 +15,8 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  getWeather: () => dispatch(getWeather())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

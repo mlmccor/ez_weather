@@ -3,16 +3,20 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
 
+import CurrentWeather from './routes/CurrentWeather'
+
 import {getWeather} from './actions/weatherActions'
 
 class App extends Component {
+
   componentDidMount() {
     this.props.getWeather()
   }
+
   render() {
     return (
       <div className="App">
-      This Works!
+        <CurrentWeather current={this.props.weather.current}/>
       </div>
     );
   }

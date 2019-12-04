@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
+import {getWeather} from './actions/weatherActions'
+
+class App extends Component {
+  componentDidMount() {
+    this.props.getWeather()
+  }
+  render() {
+    return (
+      <div className="App">
       This Works!
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {

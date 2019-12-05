@@ -4,8 +4,9 @@ import './App.css';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import Home from './routes/Home'
 import CurrentWeather from './routes/CurrentWeather'
-import WeeklyForcast from './routes/WeeklyForcast'
+import WeeklyForecast from './routes/WeeklyForecast'
 
 import {getWeather} from './actions/weatherActions'
 
@@ -19,12 +20,14 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Link to='/'>Current Weather</Link>
-          <Link to='/weekly'>Weekly Forcast</Link>
+          <Link to='/'>Home</Link><br/>
+          <Link to='/current'>Current Weather</Link><br/>
+          <Link to='/weekly'>Weekly Forecast</Link>
 
 
-          <Route exact path='/' render= {props => <CurrentWeather/>}/>
-          <Route path='/weekly' render= {props => <WeeklyForcast/>}/>
+          <Route exact path='/' render= {props => <Home/>}/>
+          <Route path='/weekly' render= {props => <WeeklyForecast {...this.props.weather.daily}/>}/>
+          <Route path='/current' render= {props =><CurrentWeather current={this.props.weather.currently}/>}/>
 
         </div>
       </Router>

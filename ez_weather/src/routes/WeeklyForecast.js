@@ -3,6 +3,7 @@ import React from 'react';
 import ForecastDay from '../components/ForecastDay'
 
 const WeeklyForecast = (weekly) => {
+  if (!weekly.data) return <p></p> 
   let generateDays = function() {
     return weekly.data.map((day) => <ForecastDay {...day}/>)
   }

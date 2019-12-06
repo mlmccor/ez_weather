@@ -7,3 +7,7 @@ export function getWeather() {
     })
   }
 }
+
+export function getCoordinates() {
+  debugger
+}

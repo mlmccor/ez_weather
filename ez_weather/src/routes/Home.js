@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
+import {getCoordinates} from '../actions/weatherActions'
 
-const Home = () => {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  )
+import LocationSearch from '../components/LocationSearch'
+
+class Home extends Component {
+  render() {
+    return(
+      <div>
+        <h1>Home Page</h1>
+        <LocationSearch getCoordinates={this.props.getCoordinates}/>
+      </div>
+    )
+  }
 }
 
-export default Home
+const mapDispatchToProps = dispatch => ({
+  getCoordinates: () => dispatch(getCoordinates())
+})
+
+export default connect(null,mapDispatchToProps)(Home)

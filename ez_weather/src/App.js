@@ -12,14 +12,8 @@ import {getWeather} from './actions/weatherActions'
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.getWeather()
-  }
+  
 
-  sanitizeInput() {
-    let string = 'washington dc'
-    console.log(string.replace(/\W/g,'%2'))
-  }
 
   render() {
     return (
@@ -29,7 +23,6 @@ class App extends Component {
           <Link to='/current'>Current Weather</Link><br/>
           <Link to='/weekly'>Weekly Forecast</Link><br/>
           <Link to='/hourly'>Hourly Forecast</Link>
-          {this.sanitizeInput()}
 
           <Route exact path='/' render= {props => <Home/>}/>
           <Route path='/weekly' render= {props => <WeeklyForecast {...this.props.weather.daily}/>}/>

@@ -8,6 +8,14 @@ export function getWeather() {
   }
 }
 
-export function getCoordinates() {
-  debugger
+export function getCoordinates(query) {
+  let sanitizedQuery = query.replace(/\W/g, '%2')
+  return (dispatch) => {
+    let url = 'https://api.opencagedata.com/geocode/v1/json?q=' + sanitizedQuery + '&key=apikey'
+    return fetch(url)
+    .then(resp => resp.json())
+    .then(data => {
+      return dispatch({type:'RETRIEVE_LOCATION_LIST', payload: data.results})
+    })
+  }
 }

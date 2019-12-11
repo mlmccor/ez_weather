@@ -1,11 +1,12 @@
 import React from 'react';
 
-const LocationList = (locations) => {
+import Location from './Location'
+
+const LocationList = ({locations, getWeather}) => {
   let formattedLists = () => {
-    console.log('hits here')
-    return locations.locations.map((location) => <h4>{location.formatted}</h4>)
+    return locations.map((location) => <Location location={location} getWeather={getWeather}/>)
   }
-  if (locations.locations.length > 0) {
+  if (locations.length > 1) {
     return (
       <div>
       <h3>Search Results</h3>
@@ -13,7 +14,7 @@ const LocationList = (locations) => {
       </div>
     )
   } else {
-    return (<div>NOthing</div>)
+    return (<div>Nothing</div>)
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import {getCoordinates} from '../actions/weatherActions'
+import {getCoordinates, getWeather} from '../actions/weatherActions'
 
 import LocationSearch from '../components/LocationSearch'
 import LocationList from '../components/LocationList'
@@ -12,7 +12,7 @@ class Home extends Component {
       <div>
         <h1>Home Page</h1>
         <LocationSearch getCoordinates={this.props.getCoordinates}/>
-        <LocationList locations={this.props.results}/>
+        <LocationList locations={this.props.results} getWeather={this.props.getWeather}/>
       </div>
     )
   }
@@ -23,7 +23,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getCoordinates: (query) => dispatch(getCoordinates(query))
+  getCoordinates: (query) => dispatch(getCoordinates(query)),
+  getWeather: () => dispatch(getWeather())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home)

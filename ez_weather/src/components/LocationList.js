@@ -14,7 +14,7 @@ const LocationList = ({locations, getWeather}) => {
       </div>
     )
   } else {
-    return (<div>Nothing</div>)
+    return (<div></div>)
   }
 }
 

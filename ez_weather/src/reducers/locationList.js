@@ -6,6 +6,8 @@ export default (state = {current: '' ,results: [], searching: false}, action) =>
       return {...state, results: action.payload}
     case 'SET_CURRENT_LOCATION':
       return {...state, current: action.payload}
+    case 'STOP_LOADING_LOCATIONS':
+      return {...state, results: [], searching:false}
     default:
       return state
   }

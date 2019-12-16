@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-bootstrap/Modal';
 
 import Location from './Location'
 
@@ -9,8 +10,18 @@ const LocationList = ({locations, getWeather}) => {
   if (locations.length > 1) {
     return (
       <div>
-      <h3>Search Results</h3>
-      {formattedLists()}
+      <Modal.Dialog>
+        <Modal.Header closeButton>
+          <Modal.Title>Search Results</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          {formattedLists()}
+        </Modal.Body>
+
+
+      </Modal.Dialog>
+
       </div>
     )
   } else {

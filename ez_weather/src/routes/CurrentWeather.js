@@ -3,6 +3,13 @@ import React from 'react';
 
 const CurrentWeather = ({current}) => {
 
+  let windmessage = () => {
+    if (current.windSpeed > 15) {
+      return "It's windy"
+    }
+  }
+
+
   const display = () => {
     if (current) {
       return (
@@ -11,6 +18,7 @@ const CurrentWeather = ({current}) => {
           {displayTime()}
           <p>{current && current.summary}</p>
           <p>Chance of Precipitation: {current && current.precipProbability}%</p>
+          <p>{windmessage()}</p>
         </div>
       )
     } else return <div/>

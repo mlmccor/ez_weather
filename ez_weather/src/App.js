@@ -13,7 +13,13 @@ import {getWeather} from './actions/weatherActions'
 class App extends Component {
 
 
-
+  generateCurrent() {
+    if (this.props.locationList.current) {
+      return <h1>Current Location: {this.props.locationList.current}</h1>
+    } else {
+      return <p>No Location Selected</p>
+    }
+  }
 
   render() {
     return (
@@ -24,7 +30,7 @@ class App extends Component {
           <Link to='/weekly'>Weekly Forecast</Link><br/>
           <Link to='/hourly'>Hourly Forecast</Link>
 
-          
+          {this.generateCurrent()}
 
           <Route exact path='/' render= {props => <Home/>}/>
           <Route path='/weekly' render= {props => <WeeklyForecast {...this.props.weather.daily}/>}/>

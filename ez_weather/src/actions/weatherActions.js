@@ -2,6 +2,7 @@ export function getWeather(location) {
   let coordinates =`${location.geometry.lat},${location.geometry.lng}`
   return (dispatch) => {
     dispatch({type: 'LOADING_WEATHER'})
+    dispatch({type: 'SET_CURRENT_LOCATION', payload: location.formatted})
     let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/apikey/${coordinates}`
     return fetch(url).then(resp => resp.json()).then(weather => {
       return dispatch({type:'ADD_WEATHER', payload: weather})
@@ -11,6 +12,7 @@ export function getWeather(location) {
 
 export function getCoordinates(query) {
   let sanitizedQuery = query.replace(/\W/g, '%2')
+  console.log(sanitizedQuery)
   return (dispatch) => {
     let url = 'https://api.opencagedata.com/geocode/v1/json?q=' + sanitizedQuery + '&key=apikey'
     return fetch(url)

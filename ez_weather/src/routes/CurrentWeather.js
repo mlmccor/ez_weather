@@ -16,7 +16,7 @@ const CurrentWeather = ({current}) => {
 
   return (
     <div>
-      <h1>Current Temp: { current && current.temperature}</h1>
+      <h2>Current Temp: { current && current.temperature}</h2>
       {displayTime()}
       <p>{current && current.summary}</p>
       <p>Chance of Precipitation: {current && current.precipProbability}%</p>

@@ -7,12 +7,18 @@ import LocationSearch from '../components/LocationSearch'
 import LocationList from '../components/LocationList'
 
 class Home extends Component {
+
+  generateLocations() {
+    if (this.props.searching) {
+      return <LocationList locations={this.props.results} getWeather={this.props.getWeather}/>
+    }
+  }
   render() {
     return(
       <div>
-        <h1>Home Page</h1>
+        <h2>Home Page</h2>
         <LocationSearch getCoordinates={this.props.getCoordinates}/>
-        <LocationList locations={this.props.results} getWeather={this.props.getWeather}/>
+        {this.generateLocations()}
       </div>
     )
   }

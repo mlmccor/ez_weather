@@ -12,7 +12,7 @@ import {getWeather} from './actions/weatherActions'
 
 class App extends Component {
 
-  
+
 
 
   render() {
@@ -23,6 +23,8 @@ class App extends Component {
           <Link to='/current'>Current Weather</Link><br/>
           <Link to='/weekly'>Weekly Forecast</Link><br/>
           <Link to='/hourly'>Hourly Forecast</Link>
+
+          
 
           <Route exact path='/' render= {props => <Home/>}/>
           <Route path='/weekly' render= {props => <WeeklyForecast {...this.props.weather.daily}/>}/>

@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   getCoordinates: (query) => dispatch(getCoordinates(query)),
-  getWeather: () => dispatch(getWeather())
+  getWeather: (location) => dispatch(getWeather(location))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home)

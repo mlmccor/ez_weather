@@ -2,7 +2,7 @@ import React from 'react';
 
 const Location = ({location, getWeather}) => {
   let selectLocation = () => {
-    return getWeather()
+    return getWeather(location)
   }
   return (
     <div>

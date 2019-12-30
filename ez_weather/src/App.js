@@ -10,9 +10,13 @@ import CurrentWeather from './routes/CurrentWeather'
 import WeeklyForecast from './routes/WeeklyForecast'
 import Hourly from './routes/Hourly'
 
-import {getWeather} from './actions/weatherActions'
+import {getWeather, getUser} from './actions/weatherActions'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getUser()
+  }
 
 
   generateCurrent() {
@@ -52,7 +56,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getWeather: () => dispatch(getWeather())
+  getWeather: () => dispatch(getWeather()),
+  getUser: () => dispatch(getUser())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

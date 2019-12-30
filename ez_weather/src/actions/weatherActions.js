@@ -24,3 +24,23 @@ export function getCoordinates(query) {
     })
   }
 }
+
+export function getUser() {  
+  return (dispatch) => {
+    let token = document.querySelector('meta[name="csrf-token"]').content;
+    console.log(token)
+    let url = 'localhost:3001/api/v1/users/1'
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token
+      },
+      redirect: "error"
+    }).then(response => response.json()).then(user=> {
+      console.log(user)
+      dispatch ({type:'LOADING_USER', payload: user})
+    })
+  }
+}

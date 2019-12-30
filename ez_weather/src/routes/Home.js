@@ -5,6 +5,7 @@ import {getCoordinates, getWeather} from '../actions/weatherActions'
 
 import LocationSearch from '../components/LocationSearch'
 import LocationList from '../components/LocationList'
+import Loading from '../components/Loading';
 
 class Home extends Component {
 
@@ -14,13 +15,23 @@ class Home extends Component {
     }
   }
   render() {
-    return(
-      <div>
-        <h2>Home Page</h2>
-        <LocationSearch getCoordinates={this.props.getCoordinates}/>
-        {this.generateLocations()}
-      </div>
-    )
+    if (this.props.loading) {
+      return (
+        <div>
+          <Loading/>
+        </div>
+      )
+
+    } else {
+      return(
+        <div>
+          <h2>Home Page</h2>
+          <LocationSearch getCoordinates={this.props.getCoordinates}/>
+          {this.generateLocations()}
+        </div>
+      )
+
+    }
   }
 }
 
